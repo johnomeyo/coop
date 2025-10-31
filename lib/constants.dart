@@ -217,7 +217,9 @@ final List<Map<String, dynamic>> transactionData = [
     'status': 'Sale'
   },
 ];
-
+const double kDesktopBreakpoint = 900.0;
+const double kTabletBreakpoint = 600.0;
+const double kMobileBreakpoint = 300.0;
  final List<BillModel> bills = [
   // BillModel(
   //     month: "May",

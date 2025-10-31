@@ -1,4 +1,4 @@
-import 'package:coop/presentation/pages/home_page.dart';
+import 'package:coop/presentation/components/header.dart';
 import 'package:flutter/material.dart';
 
 class RecentTransactionsSection extends StatelessWidget {

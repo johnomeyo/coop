@@ -7,10 +7,7 @@ import '../components/overiview_section.dart';
 import '../components/recent_transactions_section.dart';
 import '../components/transaction_section_chart.dart';
 
-// --- Constants for responsiveness ---
-const double kDesktopBreakpoint = 900.0;
-const double kTabletBreakpoint = 600.0;
-const double kMobileBreakpoint = 300.0;
+
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -32,7 +29,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           if (constraints.maxWidth < kDesktopBreakpoint) {
             return const SizedBox(
               width: 250, 
-              child: SideMenu(),
             );
           }
           return const SizedBox.shrink(); 
@@ -44,11 +40,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             if (constraints.maxWidth >= kDesktopBreakpoint) {
               return Row(
                 children: [
-                  const SizedBox(
-                    width: 280,
-                    child: SideMenu(),
-                  ),
-                  // Main Content
+
                   Expanded(
                     child: SingleChildScrollView(
                       child: Padding(
@@ -97,7 +89,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           onMenuTap: () =>
                               _scaffoldKey.currentState?.openDrawer()),
                       const SizedBox(height: 16),
-                      Text('Good Morning, Sajibur',
+                      Text('Good Morning, Google',
                           style: Theme.of(context).textTheme.headlineSmall),
                       const Text(
                           'Here\'s an overview of your financial health and recent activity.',

@@ -1,3 +1,4 @@
+import 'package:coop/presentation/pages/bills_page.dart';
 import 'package:flutter/material.dart';
 
 // --- Bill Model (Kept for completeness) ---
@@ -8,7 +9,7 @@ class BillModel {
   final String description;
   final String lastChargeDate;
   final double amount;
-  final String? logo; 
+  final String? logo;
 
   BillModel({
     required this.month,
@@ -45,12 +46,18 @@ class UpcomingBillsCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Upcoming Bills", // Changed to plural
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                  "Upcoming Bills",
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 TextButton(
                   onPressed: () {
-                    // Navigate to All Bills screen
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => const BillsPage()),
+                    );
                   },
                   style: TextButton.styleFrom(
                     padding: EdgeInsets.zero,
@@ -62,11 +69,12 @@ class UpcomingBillsCard extends StatelessWidget {
                       Text(
                         "View All",
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                              color: colorScheme.primary, 
+                              color: colorScheme.primary,
                               fontWeight: FontWeight.w500,
                             ),
                       ),
-                      Icon(Icons.arrow_forward_ios, size: 12, color: colorScheme.primary)
+                      Icon(Icons.arrow_forward_ios,
+                          size: 12, color: colorScheme.primary)
                     ],
                   ),
                 )
@@ -84,7 +92,8 @@ class UpcomingBillsCard extends StatelessWidget {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: bills.length,
-                separatorBuilder: (context, index) => const SizedBox(height: 12),
+                separatorBuilder: (context, index) =>
+                    const SizedBox(height: 12),
                 itemBuilder: (context, index) {
                   return _buildBillItem(context, bills[index]);
                 },
@@ -107,16 +116,24 @@ class UpcomingBillsCard extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Icon(Icons.inbox_rounded, size: 40, color: Theme.of(context).colorScheme.primary.withOpacity(0.6)),
+          Icon(Icons.inbox_rounded,
+              size: 40,
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.6)),
           const SizedBox(height: 12),
           Text(
             "All clear!",
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context)
+                .textTheme
+                .titleMedium
+                ?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 4),
           Text(
             "No upcoming bills scheduled.",
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey.shade600),
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(color: Colors.grey.shade600),
           ),
         ],
       ),
@@ -140,7 +157,10 @@ class UpcomingBillsCard extends StatelessWidget {
             width: 55,
             height: 55,
             decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.05), // Primary color highlight
+              color: Theme.of(context)
+                  .colorScheme
+                  .primary
+                  .withOpacity(0.05), // Primary color highlight
               borderRadius: BorderRadius.circular(10),
             ),
             child: Column(
@@ -175,14 +195,21 @@ class UpcomingBillsCard extends StatelessWidget {
                     // Handle bill logo display
                     if (bill.logo != null) ...[
                       // Assuming bill.logo is a network or local asset path that works with Image.network/asset
-                      Image.network(bill.logo!, width: 20, height: 20, errorBuilder: (context, error, stackTrace) => const SizedBox.shrink()),
+                      Image.network(bill.logo!,
+                          width: 20,
+                          height: 20,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const SizedBox.shrink()),
                       const SizedBox(width: 6),
                     ],
                     // Use Flexible to prevent the title from pushing the Row out
                     Flexible(
                       child: Text(
                         bill.title,
-                        style: Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleSmall
+                            ?.copyWith(fontWeight: FontWeight.w600),
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
@@ -191,13 +218,19 @@ class UpcomingBillsCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   bill.description,
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.grey.shade600),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall
+                      ?.copyWith(color: Colors.grey.shade600),
                   overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 4),
                 Text(
                   "Last Charge: ${bill.lastChargeDate}",
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.grey.shade500),
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelSmall
+                      ?.copyWith(color: Colors.grey.shade500),
                 ),
               ],
             ),
@@ -209,7 +242,9 @@ class UpcomingBillsCard extends StatelessWidget {
             "\$${bill.amount.toStringAsFixed(2)}", // Ensure currency format is correct
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.error, // Use error color to highlight cost
+                  color: Theme.of(context)
+                      .colorScheme
+                      .error, // Use error color to highlight cost
                 ),
           ),
         ],

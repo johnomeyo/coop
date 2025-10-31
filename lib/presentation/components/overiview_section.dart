@@ -2,7 +2,6 @@ import 'package:coop/components/goal_card.dart';
 import 'package:coop/components/up_coming_bill_card.dart';
 import 'package:coop/constants.dart';
 import 'package:flutter/material.dart';
-import '../pages/home_page.dart';
 
 class OverviewSection extends StatelessWidget {
   const OverviewSection({super.key});
@@ -14,9 +13,7 @@ class OverviewSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Responsive layout for cards
         if (isMobile)
-          // 📱 On mobile → show in a column
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
