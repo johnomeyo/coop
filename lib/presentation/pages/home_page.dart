@@ -1,6 +1,4 @@
-import 'package:coop/presentation/components/side_menu.dart';
 import 'package:flutter/material.dart';
-
 import '../components/header.dart';
 import '../components/my_cards_section.dart';
 import '../components/overiview_section.dart';
@@ -78,7 +76,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 ],
               );
             } else {
-              // Mobile/Tablet Layout (single column scrollable)
               return SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),

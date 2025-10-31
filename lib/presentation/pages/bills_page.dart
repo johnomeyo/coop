@@ -1,5 +1,3 @@
-import 'package:coop/presentation/components/header.dart';
-import 'package:coop/presentation/components/side_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
