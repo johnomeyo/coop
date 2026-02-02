@@ -1,7 +1,7 @@
 import 'package:coop/presentation/pages/bills_page.dart';
+import 'package:coop/utils/utils.dart';
 import 'package:flutter/material.dart';
 
-// --- Bill Model (Kept for completeness) ---
 class BillModel {
   final String month;
   final int day;
@@ -21,7 +21,6 @@ class BillModel {
     this.logo,
   });
 }
-// ----------------------------------------
 
 class UpcomingBillsCard extends StatelessWidget {
   final List<BillModel> bills;
@@ -32,73 +31,75 @@ class UpcomingBillsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
-    return Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Padding(
-        padding: const EdgeInsets.all(20), // Slightly increased padding
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min, // Essential for tight Column
-          children: [
-            // Header
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Upcoming Bills",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (_) => const BillsPage()),
-                    );
-                  },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    minimumSize: const Size(50, 20),
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    return SizedBox(
+      height: 300,
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Header
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Upcoming Bills",
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(fontWeight: FontWeight.bold),
                   ),
-                  child: Row(
-                    children: [
-                      Text(
-                        "View All",
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                              color: colorScheme.primary,
-                              fontWeight: FontWeight.w500,
-                            ),
-                      ),
-                      Icon(Icons.arrow_forward_ios,
-                          size: 12, color: colorScheme.primary)
-                    ],
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(height: 16),
-
-            // Bills List / Empty State
-            if (bills.isEmpty)
-              _buildEmptyState(context)
-            else
-              // Use ListView.separated for clean list dividers and controlled height
-              // Since this card will likely sit in a column/list, we must use shrinkWrap and physics
-              ListView.separated(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: bills.length,
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 12),
-                itemBuilder: (context, index) {
-                  return _buildBillItem(context, bills[index]);
-                },
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const BillsPage()),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: const Size(50, 20),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          "View All",
+                          style:
+                              Theme.of(context).textTheme.labelLarge?.copyWith(
+                                    color: colorScheme.primary,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                        ),
+                        Icon(Icons.arrow_forward_ios,
+                            size: 12, color: colorScheme.primary)
+                      ],
+                    ),
+                  )
+                ],
               ),
-          ],
+              const SizedBox(height: 16),
+
+              // Bills List / Empty State
+              if (bills.isEmpty)
+                _buildEmptyState(context)
+              else
+                // Use ListView.separated for clean list dividers and controlled height
+                // Since this card will likely sit in a column/list, we must use shrinkWrap and physics
+                ListView.separated(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: bills.length > 2 ? 2 : bills.length,
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 12),
+                  itemBuilder: (context, index) {
+                    return _buildBillItem(context, bills[index]);
+                  },
+                ),
+            ],
+          ),
         ),
       ),
     );
@@ -239,12 +240,10 @@ class UpcomingBillsCard extends StatelessWidget {
           // Price
           const SizedBox(width: 12),
           Text(
-            "\$${bill.amount.toStringAsFixed(2)}", // Ensure currency format is correct
+            "KES ${Utils.formatWithCommas(bill.amount)}",
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .error, // Use error color to highlight cost
+                  color: Theme.of(context).colorScheme.error,
                 ),
           ),
         ],

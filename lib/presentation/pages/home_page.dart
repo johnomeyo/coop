@@ -38,7 +38,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
             if (constraints.maxWidth >= kDesktopBreakpoint) {
               return Row(
                 children: [
-
                   Expanded(
                     child: SingleChildScrollView(
                       child: Padding(
@@ -62,8 +61,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               children: [
                                 const Expanded(
                                     flex: 3, child: TransactionChartSection()),
-                                const SizedBox(width: 24),
-                                Expanded(flex: 2, child: MyCardsSection()),
                               ],
                             ),
                             const SizedBox(height: 32),
@@ -96,7 +93,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       const SizedBox(height: 32),
                       const TransactionChartSection(),
                       const SizedBox(height: 32),
-                      MyCardsSection(),
+                      // MyCardsSection(),
                       const SizedBox(height: 32),
                       RecentTransactionsSection(),
                     ],

@@ -104,7 +104,7 @@ class _TransactionChartSectionState extends State<TransactionChartSection> {
         totalSales > 0 ? ((totalSales - totalExpenses) / totalSales * 100) : 0;
 
     return Card(
-      elevation: 0,
+      // elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(24.0),

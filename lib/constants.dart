@@ -221,33 +221,33 @@ const double kDesktopBreakpoint = 900.0;
 const double kTabletBreakpoint = 600.0;
 const double kMobileBreakpoint = 300.0;
  final List<BillModel> bills = [
-  // BillModel(
-  //     month: "May",
-  //     day: 15,
-  //     title: "Netflix",
-  //     description: "Figma - Monthly",
-  //     lastChargeDate: "14 May, 2022",
-  //     amount: 150,
-  //     logo:
-  //         "https://img.icons8.com/?size=100&id=VZLXV08EcZsm&format=png&color=000000"),
-  // BillModel(
-  //   month: "Jun",
-  //   day: 16,
-  //   title: "Adobe",
-  //   description: "Adobe - Yearly",
-  //   lastChargeDate: "17 Jun, 2023",
-  //   amount: 559,
-  //   logo:
-  //       "https://img.icons8.com/?size=100&id=W0YEwBDDfTeu&format=png&color=000000",
-  // ),
-  // BillModel(
-  //   month: "Jun",
-  //   day: 16,
-  //   title: "Adobe",
-  //   description: "Adobe - Yearly",
-  //   lastChargeDate: "17 Jun, 2023",
-  //   amount: 559,
-  //   logo:
-  //       "https://img.icons8.com/?size=100&id=gav46YArUSy1&format=png&color=000000",
-  // )
+  BillModel(
+      month: "May",
+      day: 15,
+      title: "Netflix",
+      description: "Figma - Monthly",
+      lastChargeDate: "14 May, 2022",
+      amount: 150,
+      logo:
+          "https://img.icons8.com/?size=100&id=VZLXV08EcZsm&format=png&color=000000"),
+  BillModel(
+    month: "Jun",
+    day: 16,
+    title: "Adobe",
+    description: "Adobe - Yearly",
+    lastChargeDate: "17 Jun, 2023",
+    amount: 559,
+    logo:
+        "https://img.icons8.com/?size=100&id=W0YEwBDDfTeu&format=png&color=000000",
+  ),
+  BillModel(
+    month: "Jun",
+    day: 16,
+    title: "Adobe",
+    description: "Adobe - Yearly",
+    lastChargeDate: "17 Jun, 2023",
+    amount: 559,
+    logo:
+        "https://img.icons8.com/?size=100&id=gav46YArUSy1&format=png&color=000000",
+  )
 ];
