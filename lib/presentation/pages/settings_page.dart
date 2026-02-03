@@ -419,7 +419,7 @@ class _PreferencesSection extends StatefulWidget {
 }
 
 class _PreferencesSectionState extends State<_PreferencesSection> {
-  bool _darkMode = false;
+  // bool _darkMode = false;
   bool _emailNotifications = true;
   bool _pushNotifications = true;
   bool _analytics = false;

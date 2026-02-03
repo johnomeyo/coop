@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../components/header.dart';
-import '../components/my_cards_section.dart';
 import '../components/overiview_section.dart';
 import '../components/recent_transactions_section.dart';
 import '../components/transaction_section_chart.dart';
@@ -20,6 +19,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       key: _scaffoldKey,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       drawer: LayoutBuilder(
